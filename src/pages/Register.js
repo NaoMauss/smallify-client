@@ -1,10 +1,5 @@
 import "../App.css";
-import { useState } from "react";
-import axios from "axios";
 export default function Register() {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-
   return (
     <div className="App">
       <h1>Register</h1>
@@ -20,7 +15,6 @@ export default function Register() {
             name="pseudo"
             id="pseudo"
             required
-            onChange={(event) => setemail(event.target.value)}
           />
           <label className="label-form" htmlFor="email">
             <b>Email: </b>
@@ -32,7 +26,6 @@ export default function Register() {
             name="email"
             id="email"
             required
-            onChange={(event) => setemail(event.target.value)}
           />
           <label className="label-form" htmlFor="psw">
             <b>Password: </b>
@@ -44,7 +37,6 @@ export default function Register() {
             name="psw"
             id="psw"
             required
-            onChange={(event) => setpassword(event.target.value)}
           />
           <label className="label-form" htmlFor="psw-repeat">
             <b>Repeat Password: </b>
