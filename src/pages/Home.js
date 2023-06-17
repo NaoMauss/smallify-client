@@ -30,6 +30,17 @@ export default function Home() {
     }
   };
 
+  const handleCopyClick = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text copied successfully!");
+      })
+      .catch((error) => {
+        console.error("Error copying text:", error);
+      });
+  };
+
   return (
     <div className="App">
       <h1>SMALLIFY</h1>
@@ -62,7 +73,7 @@ export default function Home() {
             </a>
             {linkid.data ? (
               <button
-                onClick={navigator.clipboard.writeText(linkid.data)}
+                onClick={() => handleCopyClick(linkid.data)}
                 className="button-copy"
               >
                 Copy
