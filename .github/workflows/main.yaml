@@ -2,21 +2,14 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+      - uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm install
@@ -24,8 +17,8 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: FTP deployment
-        uses: samuelmeuli/action-sftp@v2
+      - name: Upload to Server
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
